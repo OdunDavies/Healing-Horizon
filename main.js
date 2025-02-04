@@ -156,6 +156,46 @@ function displayQuizResult(score) {
         <p>${adviceText}</p>
         <p><strong>Note:</strong> This quiz is not a diagnostic tool. For a proper diagnosis and treatment, please consult with a qualified mental health professional.</p>
     `;
+    // Add this to the existing main.js file
+
+document.addEventListener('DOMContentLoaded', () => {
+    // ... existing code ...
+
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', handleContactSubmit);
+    }
+});
+
+// ... existing code ...
+
+async function handleContactSubmit(event) {
+    event.preventDefault();
+    const form = event.target;
+    const formData = new FormData(form);
+
+    try {
+        const response = await fetch('/send-email', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(Object.fromEntries(formData)),
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+            alert('Your message has been sent successfully!');
+            form.reset();
+        } else {
+            alert('There was an error sending your message. Please try again.');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred. Please try again later.');
+    }
+}
 }
 
 // Existing signup and login functions remain unchanged
