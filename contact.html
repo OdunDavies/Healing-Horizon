@@ -25,7 +25,29 @@
             <p>Email: john.doe@example.com</p>
             <p>Phone: (098) 765-4321</p>
         </section>
-        <!-- Add more professionals as needed -->
+
+        <section>
+            <h2>Contact Form</h2>
+            <form id="contactForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="professional">Select Professional:</label>
+                <select id="professional" name="professional" required>
+                    <option value="">Choose a professional</option>
+                    <option value="jane.smith@example.com">Dr. Jane Smith</option>
+                    <option value="john.doe@example.com">Dr. John Doe</option>
+                </select>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
     </main>
 
     <footer>
